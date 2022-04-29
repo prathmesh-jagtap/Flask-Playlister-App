@@ -2,36 +2,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="post" action="/playlists">
-        <fieldset>
-            <legend>{{ title }}</legend>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method="post" action="/playlists">
+            <fieldset>
+                <legend>{{ title }}</legend>
+                <!--TITLE-->
+                <div class='form-group'>
+                    <label for="playlist-title">Title</label><br>
+                    <input id="playlist-title" type="text" name="title"  />
+                </div>
 
-<!--        TITLE-->
-            <div>
-                <label for="playlist-title">Title</label><br>
-                <input id="playlist-title" type="text" name="title"  />
-            </div>
+                <!--DESCRIPTION-->
+                <div class='form-group'>
+                    <label for="description">Description</label><br>
+                    <input id="description" type="text" name="description"  />
+                </div>
 
-<!--        DESCRIPTION-->
-            <div>
-                <label for="description">Description</label><br>
-                <input id="description" type="text" name="description"  />
-            </div>
-
-<!--        VIDEOS IDS-->
-            <div>
-                <label for="playlists-video-ids">Videos</label>
-                <p>Add the url of the videos you want to include in your playlist.</p>
-                <textarea id="playlists-video-ids" name="video_ids" rows="10"></textarea>
-            </div>
-        </fieldset>
-
-        <br>
-
-<!--    BUTTON-->
-        <p>
-            <button type="submit">Save Playlist</button>
-            <button type="reset"><a href="/">Cancel</a></button>
-        </p>
-    </form>
+                <!--VIDEOS IDS-->
+                <div class='form-group'>
+                    <label for="playlists-video-ids">Videos</label>
+                    <p class='text-muted'>Add the url of the videos you want to include in your playlist.</p>
+                <textarea class='form-control' id="playlists-video-ids" name="video_ids" rows="10"></textarea>
+                </div>
+            </fieldset>
+            <!--BUTTON-->
+                <div class='form-group'>
+                    <button class='btn btn-primary' type="submit">Save Playlist</button>
+                    <button class='btn btn-primary' type="submit"><a href="/">Cancel</a></button>
+                </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
