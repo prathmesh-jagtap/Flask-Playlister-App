@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 
-host = os.environ.get("mongodb+srv://M001DB:M001DB@sandbox.uwba1.mongodb.net/admin?retryWrites=true&w=majority", "mongodb://localhost:27017/Playlister") 
+host = "mongodb+srv://M001DB:M001DB@sandbox.uwba1.mongodb.net/admin?retryWrites=true&w=majority"
 # Creating object for mongodb connection
 client = MongoClient(host=host)
 # this will create database in mongodb
@@ -91,4 +91,4 @@ def playlists_delete(playlist_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
+    app.run(debug=True)
