@@ -1,0 +1,33 @@
+<!--templates/playlists_edit-->
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="POST" action="/playlists/{{ playlist._id }}">
+        <fieldset>
+            <legend>{{ title }}</legend>
+
+<!--        TITLE-->
+            <div>
+                <label for="playlist-title">Title</label><br>
+                <input id="playlist-title" type="text" name="title" value="{{ playlist.title }}" />
+            </div>
+
+<!--        DESCRIPTION-->
+            <div>
+                <label for="description">Description</label><br>
+                <input id="description" type="text" name="description" value="{{ playlist.description }}" />
+            </div>
+
+<!--        VIDEOS IDS-->
+            <div>
+                <label for="playlists-video-ids">Videos</label>
+                <p>Add the url of the videos you want to include in your playlist.</p>
+                <textarea id="playlists-video-ids" name="video_ids" rows="10">{{ "\n".join(playlist.video_ids) }}</textarea>
+            </div>
+        </fieldset>
+
+<!--    BUTTON-->
+            <button type="submit">Save Playlist</button>
+            <button type="reset"><a href="/">Cancel</a></button>
+    </form>
+{% endblock %}
