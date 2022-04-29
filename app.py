@@ -3,13 +3,15 @@
 from flask import Flask, render_template, redirect, request, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import os
 
 app = Flask(__name__)
 
+host = os.environ.get("MONGODB_URI", "mongodb://localhost:27017/Playlister")
 # Creating object for mongodb connection
-client = MongoClient()
-# this will create Playlister database in mongodb
-db = client.Playlister
+client = MongoClient(host=host)
+# this will create database in mongodb
+db = client.get_default_database()
 # This creates playlists collection in our database
 playlists = db.playlists
 
