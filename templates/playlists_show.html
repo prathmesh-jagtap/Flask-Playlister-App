@@ -16,14 +16,14 @@
             </div>
         {% endfor %}
 
-            <div class="form-group">
-                <!--# Edit link-->
-                <a href="/playlists/{{ playlist._id }}/edit"><button  class='btn btn-primary' type="submit">Edit</button></a>
-                <!--Delete Button--><br>
-                <form method="post" action="/playlists/{{ playlist._id }}/delete">
-                    <button class='btn btn-primary' type="submit">Delete</button>
-                </form>
-            </div>
+        <div class="form-group">
+            <!--# Edit link-->
+            <a href="/playlists/{{ playlist._id }}/edit"><button  class='btn btn-primary' type="submit">Edit</button></a>
+            <!--Delete Button--><br>
+            <form method="post" action="/playlists/{{ playlist._id }}/delete">
+                <button class='btn btn-primary' type="submit">Delete</button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
