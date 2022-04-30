@@ -3,12 +3,14 @@
 from flask import Flask, render_template, redirect, request, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import os
 
 app = Flask(__name__)
 
 URI = "mongodb+srv://M001DB:M001DB@sandbox.uwba1.mongodb.net/admin?retryWrites=true&w=majority"
+host = os.environ.get(URI, "mongodb://localhost:27017/Playlister")
 # Creating object for mongodb connection
-client = MongoClient(URI)
+client = MongoClient(host=host)
 # this will create database in mongodb
 db = client.Playlister
 # This creates playlists collection in our database
@@ -90,4 +92,4 @@ def playlists_delete(playlist_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
