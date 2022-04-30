@@ -8,12 +8,12 @@ app = Flask(__name__)
 app.config["TESTING"] = True
 app.config["SECRET_KEY"] = 'ed93a0fd1f3fca263d3c915fa9bc4ccc28c4c30b0e814a3e01972fcad1f09a51'
 
-URI = "mongodb+srv://M001DB:M001DB@sandbox.uwba1.mongodb.net/admin?retryWrites=False"
+URI = "mongodb+srv://M001DB:M001DB@sandbox.uwba1.mongodb.net/Playlister?retryWrites=False"
 # host = os.environ.get("MONGODB_URI", "mongodb://localhost:27017/Playlister")
 # Creating object for mongodb connection
 client = MongoClient(URI)
 # this will create database in mongodb
-db = client.get_default_database()
+db = client.Playlister
 # This creates playlists collection in our database
 playlists = db.playlists
 
