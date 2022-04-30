@@ -16,6 +16,8 @@ client = MongoClient(URI)
 db = client.Playlister
 # This creates playlists collection in our database
 playlists = db.playlists
+# comments collection
+comments = db.comments
 
 
 # this is our Root Route - '/'
@@ -57,7 +59,9 @@ def playlists_submit():
 def playlists_show(playlist_id):
     """Returning the playlist."""
     playlist = playlists.find_one({"_id": ObjectId(playlist_id)})
-    return render_template('playlists_show.html', playlist=playlist)
+    # for comments
+    playlist_comments = comments.find({'playlist_id': ObjectId(playlist_id)})
+    return render_template('playlists_show.html', playlist=playlist, comments=playlist_comments)
 
 
 @app.route('/playlists/<playlist_id>', methods=['POST'])
@@ -90,6 +94,17 @@ def playlists_delete(playlist_id):
     """Delete one playlist."""
     playlists.delete_one({'_id': ObjectId(playlist_id)})
     return redirect(url_for('playlists_index'))
+
+
+@app.route('/playlists/comments', methods=['POST'])
+def comments_new():
+    """Submit a new comment"""
+    comment = {
+        'title': request.form.get('title'),
+        'Comments': request.form.get('content')
+    }
+    comments.insert_one(comment)
+    return redirect(url_for('playlists_show', playlist_id=request.form.get('playlist_id')))
 
 
 if __name__ == '__main__':
