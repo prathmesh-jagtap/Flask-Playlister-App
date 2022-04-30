@@ -30,15 +30,11 @@
         <hr>
         <!-- Comment form-->
         {% include "partials/comment_form.html" %}
-
-        {% for comment in comments %}
-           <div class="card">
-                <div class="carf-block">
-                    <h4 class="card-title">{{ comment.title }}</h4>
-                    <p class="card-text">{{ comment.content }}</p>
-                </div>
+        <div>
+            <!--showing comments-->
+            {% for comment in comments %}
+            {% include "partials/comment.html" %}
+            {% endfor %}
             </div>
-        {% endfor %}
-    </div>
 </div>
 {% endblock %}
