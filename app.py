@@ -115,7 +115,5 @@ def comments_delete(comment_id):
     return redirect(url_for('playlists_show'))
 
 
-
-
 if __name__ == '__main__':
     app.run(debug=True)
