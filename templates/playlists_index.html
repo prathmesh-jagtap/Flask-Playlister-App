@@ -5,13 +5,15 @@
 <h1>Playlists</h1>
 
 <!--    link for new playlist-->
-    <b><a href="/playlists/new">New Playlist</a></b>
+<!--    <b><a href="/playlists/new">New Playlist</a></b>-->
 
 <div class="row">
     {% for playlist in playlists %}
         <div class="col-md-3">
-            <h2><a href="/playlists/{{ playlist._id }}">{{ playlist.title }}</a></h2>
-            <small>{{ playlist.description }}</small>
+            <div class="card"><div class="card-body">
+                <h2><a href="/playlists/{{ playlist._id }}">{{ playlist.title }}</a></h2>
+                <small>{{ playlist.description }}</small>
+            </div></div>
         </div>
 <!--        <h3>{{ playlist.videos }}</h3>-->
 <!--        <h3>{{ playlist.video_ids }}</h3>-->
