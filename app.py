@@ -101,7 +101,8 @@ def comments_new():
     """Submit a new comment"""
     comment = {
         'title': request.form.get('title'),
-        'content': request.form.get('content')
+        'content': request.form.get('content'),
+        'playlist_id': ObjectId(request.form.get("playlist_id"))
     }
     comments.insert_one(comment)
     return redirect(url_for('playlists_show', playlist_id=request.form.get('playlist_id')))
