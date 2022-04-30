@@ -8,9 +8,9 @@ import os
 app = Flask(__name__)
 
 URI = "mongodb+srv://M001DB:M001DB@sandbox.uwba1.mongodb.net/admin?retryWrites=true&w=majority"
-host = os.environ.get(URI, "mongodb://localhost:27017/Playlister")
+# host = os.environ.get("MONGODB_URI", "mongodb://localhost:27017/Playlister")
 # Creating object for mongodb connection
-client = MongoClient(host=host)
+client = MongoClient(URI, host="mongodb://localhost:27017/Playlister")
 # this will create database in mongodb
 db = client.Playlister
 # This creates playlists collection in our database
