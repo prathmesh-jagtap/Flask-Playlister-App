@@ -3,6 +3,7 @@
 from flask import Flask, render_template, redirect, request, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from datetime import datetime
 
 app = Flask(__name__)
 app.config["TESTING"] = True
@@ -49,10 +50,11 @@ def playlists_submit():
         'title': request.form.get('title'),
         'description': request.form.get('description'),
         'videos': videos,
-        'video_ids': video_ids
+        'video_ids': video_ids,
+        "created_at": datetime.now().strftime("%a %b %d %Y %I %M %p")
     }
-    playlists.insert_one(playlist)
-    return redirect(url_for('playlists_index'))
+    playlist_id = playlists.insert_one(playlist).inserted_id
+    return redirect(url_for('playlists_index', playlist_id=playlist_id))
 
 
 @app.route('/playlists/<playlist_id>')
