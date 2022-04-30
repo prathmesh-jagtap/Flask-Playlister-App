@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
         <h1>{{ playlist.title }}</h1>
-        <small>{{ playlist.description }}</small>
+        <small>{{ playlist.description }}</small><br>
         {% for video in playlist.videos %}
             <div class="card">
                 <div class="card-body">
@@ -16,7 +16,7 @@
             </div>
         {% endfor %}
 
-        <div class="form-group">
+        <div class="btn-group">
             <!--# Edit link-->
             <a href="/playlists/{{ playlist._id }}/edit"><button  class='btn btn-primary' type="submit">Edit</button></a>
             <!--Delete Button--><br>
