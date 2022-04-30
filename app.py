@@ -60,7 +60,7 @@ def playlists_show(playlist_id):
     """Returning the playlist."""
     playlist = playlists.find_one({"_id": ObjectId(playlist_id)})
     # for comments
-    playlist_comments = comments.find()
+    playlist_comments = comments.find({"playlist_id": ObjectId(playlist_id)})
     return render_template('playlists_show.html', playlist=playlist, comments=playlist_comments)
 
 
