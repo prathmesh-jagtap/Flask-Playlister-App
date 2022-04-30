@@ -51,7 +51,7 @@ def playlists_submit():
         'description': request.form.get('description'),
         'videos': videos,
         'video_ids': video_ids,
-        "created_at": datetime.now().strftime("%a %b %d %Y %I : %M %p")
+        "created_at": datetime.now().strftime("%a %b %d %Y %l : %M %p")
     }
     playlist_id = playlists.insert_one(playlist).inserted_id
     return redirect(url_for('playlists_index', playlist_id=playlist_id))
