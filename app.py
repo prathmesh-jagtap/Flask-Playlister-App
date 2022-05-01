@@ -4,6 +4,7 @@ from flask import Flask, render_template, redirect, request, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
+import pytz
 
 app = Flask(__name__)
 app.config["TESTING"] = True
@@ -41,7 +42,7 @@ def video_url_creator(id_lst):
 
 @app.route('/playlists', methods=['POST'])
 def playlists_submit():
-    """Submit a new playlist/"""
+    """Submit a new playlist/ in the database"""
     # taking the video IDs and make a list out of them
     video_ids = request.form.get('video_ids').split()
     # Now calling the function to create the list of Urls
@@ -51,7 +52,7 @@ def playlists_submit():
         'description': request.form.get('description'),
         'videos': videos,
         'video_ids': video_ids,
-        "created_at": datetime.now().strftime("%a %b %d %Y %l : %M %p")
+        "created_at": datetime.now(pytz.timezone('Asia/Kolkata')).strftime("%a %b %d %Y %H:%M %p")
     }
     playlist_id = playlists.insert_one(playlist).inserted_id
     return redirect(url_for('playlists_index', playlist_id=playlist_id))
@@ -59,7 +60,7 @@ def playlists_submit():
 
 @app.route('/playlists/<playlist_id>')
 def playlists_show(playlist_id):
-    """Returning the playlist."""
+    """Returning the playlist from db to html page."""
     playlist = playlists.find_one({"_id": ObjectId(playlist_id)})
     # for comments
     playlist_comments = comments.find({"playlist_id": ObjectId(playlist_id)})
