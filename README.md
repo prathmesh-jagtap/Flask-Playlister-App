@@ -9,5 +9,3 @@ Now, when you click on any of the playlists, you see the playlist title, date-ti
 Add a comment section and its delete button.
 
 So, when you click on New Playlist you will see a form that has Title, Description and Video URL fields which take Playlist Title, Description and Video URL ID respectively.
-
-Here is My Project files directory:
