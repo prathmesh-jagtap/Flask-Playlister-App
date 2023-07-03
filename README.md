@@ -11,3 +11,9 @@ Add a comment section and its delete button.
 
 So, when you click on New Playlist you will see a form that has Title, Description and Video URL fields which take Playlist Title, Description and Video URL ID respectively.
 01/05/2022
+
+## Tech Stack
+* **Frontend** - HTML, CSS, Jinja.
+* **Backend** - Python, Flask
+* **Database** - MongoDB.
+* **Deployment** - Heroku.
